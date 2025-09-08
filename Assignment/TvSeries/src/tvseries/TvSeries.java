@@ -98,20 +98,23 @@ static List<SeriesModel> seriesList = new ArrayList<>();
          name = input.nextLine();
      }
      //enter series  age  restriction
-     System.out.print("Enter the age restriction: ");
-     String age = input.nextLine();
-     
-         boolean validAge = false;
-        while(!validAge) {     
+     String age;
+               while(true) {   
+            System.out.print("Enter the age restriction: ");
+            age = input.nextLine();
+               try{
                 int ageInt = Integer.parseInt(age);
                 if(ageInt < 2 || ageInt > 18) {
                     System.out.print("You have entered a incorrect series age!!!.\n Please re-enter the series age >>  ");
                     age = input.nextLine();
                 } else {
-                    validAge = true;
+                    break;
                 }
-            
+               }catch(NumberFormatException e){
+                   System.out.println("Please enter a numeric value:");
+               }                 
 }
+     
 //enter the number of episodes
 System.out.print("Enter the number of episodes for " + name + " : ");
 String episodes = input.nextLine();
@@ -237,4 +240,5 @@ public static void UpdateSeries() {
     
     
     
+
 
